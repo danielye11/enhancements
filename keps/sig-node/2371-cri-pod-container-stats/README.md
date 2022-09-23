@@ -104,7 +104,7 @@ Summary API has two interfaces:
 
 Below is a table describing which stats come from what source now, as well a proposal of which should come from where in the future. It also includes which fields roughly correspond to fields in the `/metrics/cadvisor` endpoint, some of which will not come from the CRI for the first iteration of this KEP. See more below.
 
-|Top level object              |`/stats/summary` Field|`/metrics/cadvisor` field                       |Level Needed in `/stats/summary`|Currently provided by:|Proposed to be provided by:|Cgroup v1 stat:|Cgroup v2 stat:|
+|Top level object              |`/stats/summary` Field|`/metrics/cadvisor` field                       |Level Needed in `/stats/summary`|Currently provided by:|Proposed to be provided by:|Cgroup v1 stat:            |Cgroup v2 stat:|
 |------------------------------|----------------------|------------------------------------------------|--------------------------------|----------------------|---------------------------|---------------------------|---------------------------|
 |InterfaceStats (Network)      |RxBytes               |container_network_receive_bytes_total           |Pod                             |cAdvisor              |CRI                        |
 |                              |RxErrors              |container_network_receive_errors_total          |Pod                             |cAdvisor              |CRI                        |
@@ -116,10 +116,10 @@ Below is a table describing which stats come from what source now, as well a pro
 |                              |N/A                   |container_network_transmit_packets_total        |N/A                             |cAdvisor              |CRI or N/A                 |
 |CPUStats                      |UsageNanoCores        |N/A                                             |Pod and Container               |cAdvisor              |CRI or Kubelet             |
 |                              |UsageCoreNanoSeconds  |N/A                                             |Pod and Container               |CRI                   |CRI                        |
-|                              |N/A                   |container_cpu_cfs_periods_total                 |N/A                             |cAdvisor              |CRI or N/A                 |
-|                              |N/A                   |container_cpu_cfs_throttled_periods_total       |N/A                             |cAdvisor              |CRI or N/A                 |
-|                              |N/A                   |container_cpu_cfs_throttled_seconds_total       |N/A                             |cAdvisor              |CRI or N/A                 |
-|                              |N/A                   |container_cpu_load_average_10s                  |N/A                             |cAdvisor              |CRI or N/A                 |
+|                              |N/A                   |container_cpu_cfs_periods_total                 |N/A                             |cAdvisor              |CRI or N/A                 | (cpu.stat) nr_periods
+|                              |N/A                   |container_cpu_cfs_throttled_periods_total       |N/A                             |cAdvisor              |CRI or N/A                 | (cpu.stat) nr_throttled
+|                              |N/A                   |container_cpu_cfs_throttled_seconds_total       |N/A                             |cAdvisor              |CRI or N/A                 | (cpu.stat) throttled_time
+|                              |N/A                   |container_cpu_load_average_10s                  |N/A                             |cAdvisor              |Removing this metric (not in v2)
 |                              |N/A                   |container_cpu_system_seconds_total              |N/A                             |cAdvisor              |CRI or N/A                 |
 |                              |N/A                   |container_cpu_usage_seconds_total               |N/A                             |cAdvisor              |CRI or N/A                 |
 |                              |N/A                   |container_cpu_user_seconds_total                |N/A                             |cAdvisor              |CRI or N/A                 |
