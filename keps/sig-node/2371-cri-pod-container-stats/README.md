@@ -104,8 +104,8 @@ Summary API has two interfaces:
 
 Below is a table describing which stats come from what source now, as well a proposal of which should come from where in the future. It also includes which fields roughly correspond to fields in the `/metrics/cadvisor` endpoint, some of which will not come from the CRI for the first iteration of this KEP. See more below.
 
-|Top level object              |`/stats/summary` Field|`/metrics/cadvisor` field                       |Level Needed in `/stats/summary`|Currently provided by:|Proposed to be provided by:|
-|------------------------------|----------------------|------------------------------------------------|--------------------------------|----------------------|---------------------------|
+|Top level object              |`/stats/summary` Field|`/metrics/cadvisor` field                       |Level Needed in `/stats/summary`|Currently provided by:|Proposed to be provided by:|Cgroup v1 stat:|
+|------------------------------|----------------------|------------------------------------------------|--------------------------------|----------------------|---------------------------|---------------------------|
 |InterfaceStats (Network)      |RxBytes               |container_network_receive_bytes_total           |Pod                             |cAdvisor              |CRI                        |
 |                              |RxErrors              |container_network_receive_errors_total          |Pod                             |cAdvisor              |CRI                        |
 |                              |TxBytes               |container_network_transmit_bytes_total          |Pod                             |cAdvisor              |CRI                        |
