@@ -120,9 +120,9 @@ Below is a table describing which stats come from what source now, as well a pro
 |                              |N/A                   |container_cpu_cfs_throttled_periods_total       |N/A                             |cAdvisor              |CRI or N/A                 | (cpu.stat) nr_throttled
 |                              |N/A                   |container_cpu_cfs_throttled_seconds_total       |N/A                             |cAdvisor              |CRI or N/A                 | (cpu.stat) throttled_time
 |                              |N/A                   |container_cpu_load_average_10s                  |N/A                             |cAdvisor              |Removing this metric (not in v2)
-|                              |N/A                   |container_cpu_system_seconds_total              |N/A                             |cAdvisor              |CRI or N/A                 |
-|                              |N/A                   |container_cpu_usage_seconds_total               |N/A                             |cAdvisor              |CRI or N/A                 |
-|                              |N/A                   |container_cpu_user_seconds_total                |N/A                             |cAdvisor              |CRI or N/A                 |
+|                              |N/A                   |container_cpu_system_seconds_total              |N/A                             |cAdvisor              |CRI or N/A                 | (cpuacct.stat) system
+|                              |N/A                   |container_cpu_usage_seconds_total               |N/A                             |cAdvisor              |CRI or N/A                 | (cpuacct.usage)
+|                              |N/A                   |container_cpu_user_seconds_total                |N/A                             |cAdvisor              |CRI or N/A                 | (cpuacct.stat) user 
 |MemoryStats                   |AvailableBytes        |N/A                                             |Pod and Container               |cAdvisor              |CRI                        |
 |                              |UsageBytes            |container_memory_usage_bytes                    |Pod and Container               |cAdvisor              |CRI                        |
 |                              |WorkingSetBytes       |container_memory_working_set_bytes              |Pod and Container               |CRI                   |CRI                        |
